@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiénes Somos - CapiLab</title>
+    <title>CapiLab - Clínica Capilar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,22 +11,46 @@
             padding: 0;
             line-height: 1.6;
             color: #333;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #008080;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 80px 20px 0;
         }
         .header {
             background: #008080;
             color: #fff;
             padding: 20px 0;
             text-align: center;
+            margin-top: 20px;
         }
         .header h1 {
             margin: 0;
         }
         .content {
+            padding: 20px 0;
+        }
+        .about-section, .results-section, .treatments-section, .appointments-section {
             padding: 20px 0;
         }
         .about-section {
@@ -49,13 +73,32 @@
         .about-text h2 {
             margin-top: 0;
         }
-        .mission {
+        .section {
             background: #f0f0f0;
             padding: 20px;
             border-radius: 8px;
+            margin-top: 20px;
         }
-        .mission h3 {
+        .section h3 {
             margin-top: 0;
+        }
+        .reviews-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .review {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .review p {
+            margin: 0;
+        }
+        .review-author {
+            font-weight: bold;
+            margin-top: 10px;
         }
         .cta {
             text-align: center;
@@ -73,18 +116,43 @@
         .cta a:hover {
             background: #005f5f;
         }
+        .chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #008080;
+            color: #fff;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .chatbot-icon:hover {
+            background: #005f5f;
+        }
         @media (max-width: 768px) {
             .about-section {
                 flex-direction: column;
+            }
+            .navbar a {
+                display: block;
+                margin: 10px 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Quiénes Somos</h1>
+    <div class="navbar">
+        <a href="#quienes-somos">Quiénes Somos</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#tratamientos">Tratamientos</a>
+        <a href="#turnos">Turnos</a>
     </div>
     <div class="container">
+        <div id="quienes-somos" class="header">
+            <h1>Quiénes Somos</h1>
+        </div>
         <div class="content">
             <div class="about-section">
                 <div class="about-text">
@@ -96,14 +164,51 @@
                     <img src="https://via.placeholder.com/400" alt="CapiLab">
                 </div>
             </div>
-            <div class="mission">
-                <h3>Nuestra Misión</h3>
-                <p>Proveer soluciones efectivas y avanzadas para la pérdida capilar, asegurando resultados de alta calidad que justifiquen la inversión de nuestros pacientes. Nos esforzamos por mantenernos a la vanguardia de las últimas tendencias estéticas y tecnológicas para ofrecer el mejor servicio posible.</p>
+            <div id="info-clinica" class="section">
+                <h3>Información de la Clínica</h3>
+                <p>En CapiLab, contamos con instalaciones de última generación diseñadas para brindar comodidad y privacidad a nuestros pacientes. Nuestra clínica está equipada con tecnología avanzada para garantizar los mejores resultados en nuestros tratamientos capilares.</p>
             </div>
-            <div class="cta">
+            <div id="info-medicos" class="section">
+                <h3>Información de los Médicos</h3>
+                <p>Nuestro equipo de médicos especialistas está altamente calificado y cuenta con una amplia experiencia en el campo de la restauración capilar. Cada uno de nuestros médicos se dedica a proporcionar atención personalizada y de alta calidad a cada paciente.</p>
+            </div>
+            <div id="info-productos" class="section">
+                <h3>Productos Disponibles para la Venta</h3>
+                <p>Además de nuestros tratamientos capilares, ofrecemos una selección de productos de cuidado del cabello para mantener y mejorar los resultados obtenidos. Estos productos han sido cuidadosamente seleccionados por su eficacia y calidad.</p>
+            </div>
+            <div id="reseñas" class="section reviews-section">
+                <h3>Reseñas</h3>
+                <div class="review">
+                    <p>"El tratamiento en CapiLab superó todas mis expectativas. Mi cabello luce increíble y me siento mucho más confiado. ¡Gracias, CapiLab!"</p>
+                    <div class="review-author">- Juan Pérez</div>
+                </div>
+                <div class="review">
+                    <p>"La técnica FUE realmente funciona. Los resultados son muy naturales y el proceso fue mucho más sencillo de lo que esperaba."</p>
+                    <div class="review-author">- María García</div>
+                </div>
+                <div class="review">
+                    <p>"Estoy muy contento con los resultados de mi tratamiento en CapiLab. El personal es muy profesional y las instalaciones son de primera clase."</p>
+                    <div class="review-author">- Carlos Fernández</div>
+                </div>
+            </div>
+            <div id="resultados" class="results-section">
+                <h2>Resultados</h2>
+                <p>En CapiLab, nos enorgullecemos de los resultados que logramos para nuestros pacientes. Aquí puedes ver algunos de nuestros casos de éxito y testimonios de clientes satisfechos.</p>
+            </div>
+            <div id="tratamientos" class="treatments-section">
+                <h2>Tratamientos</h2>
+                <p>Ofrecemos una variedad de tratamientos para la pérdida de cabello, incluyendo la técnica de extracción de unidades foliculares (FUE), tratamiento de plasma rico en plaquetas (PRP) y más. Consulta con nosotros para encontrar el tratamiento adecuado para ti.</p>
+            </div>
+            <div id="turnos" class="appointments-section cta">
+                <h2>Turnos</h2>
                 <a href="#">Programar una consulta</a>
             </div>
         </div>
+    </div>
+    <div class="chatbot-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12c0 2.72 1.13 5.18 2.94 6.93l-1.39 3.52 3.52-1.39C8.82 21.87 10.28 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-2 12H8v-2h2v2zm4 0h-2v-2h2v2zm2 0h-2v-2h2v2zm0-4H8V8h8v2z"/>
+        </svg>
     </div>
 </body>
 </html>
