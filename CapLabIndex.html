@@ -191,13 +191,62 @@
                     <div class="review-author">- Carlos Fernández</div>
                 </div>
             </div>
-            <div id="resultados" class="results-section">
-                <h2>Resultados</h2>
-                <p>En CapiLab, nos enorgullecemos de los resultados que logramos para nuestros pacientes. Aquí puedes ver algunos de nuestros casos de éxito y testimonios de clientes satisfechos.</p>
+            <div id="resultados" class="section">
+                <h3>Resultados</h3>
+                <div class="before-after">
+                    <div class="before-photo">
+                        <h4>Antes del Tratamiento</h4>
+                        <img src="https://via.placeholder.com/400x300?text=Antes" alt="Antes del Tratamiento">
+                    </div>
+                    <div class="after-photo">
+                        <h4>Después del Tratamiento</h4>
+                        <img src="https://via.placeholder.com/400x300?text=Después" alt="Después del Tratamiento">
+                    </div>
+                </div>
+                <div class="video-banner">
+                    <h4>Conoce más sobre nuestros tratamientos</h4>
+                    <div class="video-thumbnail">
+                        <a href="https://www.youtube.com/watch?v=example" target="_blank">
+                            <img src="https://via.placeholder.com/800x400?text=Banner+Video" alt="Video de Tratamientos">
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div id="tratamientos" class="treatments-section">
-                <h2>Tratamientos</h2>
-                <p>Ofrecemos una variedad de tratamientos para la pérdida de cabello, incluyendo la técnica de extracción de unidades foliculares (FUE), tratamiento de plasma rico en plaquetas (PRP) y más. Consulta con nosotros para encontrar el tratamiento adecuado para ti.</p>
+            
+            <div id="tratamientos" class="section">
+                <h3>Tratamientos</h3>
+            
+                <!-- Filtro de tratamientos -->
+                <div class="filtro">
+                    <label for="filtro-tratamientos">Filtrar tratamientos:</label>
+                    <select id="filtro-tratamientos" onchange="filtrarTratamientos()">
+                        <option value="todos">Todos</option>
+                        <option value="laser">Implante Capilar con Láser</option>
+                        <option value="microimplante">Microimplante Capilar</option>
+                        <option value="micropigmentacion">Micropigmentación Capilar</option>
+                    </select>
+                </div>
+            
+                <!-- Tratamientos -->
+                <div class="tratamientos-lista">
+                    <div class="tratamiento-card" data-tratamiento="laser">
+                        <h4>Implante Capilar con Láser</h4>
+                        <img src="https://via.placeholder.com/400x300?text=Implante+Laser" alt="Implante Capilar con Láser">
+                        <p>El tratamiento de implante capilar con láser es ideal para personas que buscan estimular el crecimiento del cabello de manera natural, utilizando tecnología avanzada para restaurar la densidad capilar. Este tratamiento es mínimamente invasivo y puede ser combinado con otros métodos para obtener los mejores resultados.</p>
+                    </div>
+            
+                    <div class="tratamiento-card" data-tratamiento="microimplante">
+                        <h4>Microimplante Capilar</h4>
+                        <img src="https://via.placeholder.com/400x300?text=Microimplante" alt="Microimplante Capilar">
+                        <p>El microimplante capilar es un procedimiento menos invasivo que el implante tradicional, donde se utilizan microinjertos para densificar el cabello. Es ideal para quienes buscan resultados naturales y duraderos sin la necesidad de un procedimiento quirúrgico mayor.</p>
+                    </div>
+            
+                    <div class="tratamiento-card" data-tratamiento="micropigmentacion">
+                        <h4>Micropigmentación Capilar</h4>
+                        <img src="https://via.placeholder.com/400x300?text=Micropigmentacion" alt="Micropigmentación Capilar">
+                        <p>La micropigmentación capilar es una técnica estética que simula la apariencia de cabello corto, mediante la aplicación de pigmentos que se adhieren a la epidermis. Es una excelente opción para quienes buscan mejorar la apariencia de la densidad capilar sin cirugía.</p>
+                    </div>
+                </div>
             </div>
             <div id="turnos" class="appointments-section cta">
                 <h2>Turnos</h2>
@@ -211,4 +260,25 @@
         </svg>
     </div>
 </body>
+<script>function filtrarTratamientos() {
+    // Obtener el valor del filtro
+    var filtro = document.getElementById('filtro-tratamientos').value;
+
+    // Obtener todas las tarjetas de tratamiento
+    var tratamientos = document.querySelectorAll('.tratamiento-card');
+
+    // Iterar sobre cada tarjeta de tratamiento
+    tratamientos.forEach(function(tratamiento) {
+        // Obtener el tipo de tratamiento que está asociado con esta tarjeta
+        var tipoTratamiento = tratamiento.getAttribute('data-tratamiento');
+
+        // Mostrar u ocultar según el filtro seleccionado
+        if (filtro === 'todos' || filtro === tipoTratamiento) {
+            tratamiento.style.display = 'block'; // Mostrar
+        } else {
+            tratamiento.style.display = 'none'; // Ocultar
+        }
+    });
+}
+</script>
 </html>

@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #008080;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 1000;
+}
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+.navbar a:hover {
+    text-decoration: underline;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 0;
+}
+.header {
+    background: #008080;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+.header h1 {
+    margin: 0;
+}
+.content {
+    padding: 20px 0;
+}
+.about-section, .results-section, .treatments-section, .appointments-section {
+    padding: 20px 0;
+}
+.about-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.about-text, .about-image {
+    flex: 1 1 300px;
+}
+.about-image img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+.about-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.about-text h2 {
+    margin-top: 0;
+}
+.section {
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.section h3 {
+    margin-top: 0;
+}
+.reviews-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.review {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.review p {
+    margin: 0;
+}
+.review-author {
+    font-weight: bold;
+    margin-top: 10px;
+}
+.cta {
+    text-align: center;
+    margin: 20px 0;
+}
+.cta a {
+    display: inline-block;
+    background: #008080;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.cta a:hover {
+    background: #005f5f;
+}
+.chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #008080;
+    color: #fff;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 1000;
+}
+.chatbot-icon:hover {
+    background: #005f5f;
+}
+.product-cards {
+    display: flex;
+    flex-wrap:wrap;
+}
+.before-after {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.before-photo, .after-photo {
+    width: 45%;
+    text-align: center;
+}
+.before-photo img, .after-photo img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+.video-banner {
+    margin-top: 40px;
+    text-align: center;
+}
+.video-thumbnail img {
+    max-width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.video-thumbnail img:hover {
+    transform: scale(1.05);
+}
+.video-banner h4 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+.filtro {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.filtro label {
+    font-size: 1rem;
+    color: #333;
+    margin-right: 10px;
+}
+
+.filtro select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.tratamientos-lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.tratamiento-card {
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.tratamiento-card:hover {
+    transform: scale(1.05);
+}
+
+.tratamiento-card img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.tratamiento-card h4 {
+    font-size: 1.5rem;
+    color: #008080;
+}
+
+.tratamiento-card p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
