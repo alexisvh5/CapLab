@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapiLab - Clínica Capilar</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Luego carga Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- También incluye el CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<!-- Flatpickr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
+
+<!-- Bootstrap -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -116,21 +135,43 @@
         .cta a:hover {
             background: #005f5f;
         }
-        .chatbot-icon {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #008080;
-            color: #fff;
-            border-radius: 50%;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 1000;
-        }
-        .chatbot-icon:hover {
-            background: #005f5f;
-        }
+        #btn-top {
+    position: fixed;
+    bottom: 20px;  /* Ajusta esta distancia para que no se superponga con el chatbot */
+    right: 90px;   /* Coloca el botón a la derecha */
+    background-color: #008080;  /* Color de fondo */
+    color: white;  /* Color del texto */
+    border: none;
+    padding: 15px;
+    border-radius: 50%;  /* Botón circular */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 999;  /* Asegura que el botón quede sobre otros elementos */
+    display: none;  /* Inicialmente está oculto */
+    transition: background-color 0.3s;
+}
+
+#btn-top:hover {
+    background-color: #005f5f;
+}
+
+/* Para el ícono del chatbot */
+.chatbot-icon {
+    position: fixed;
+    bottom: 20px;  /* Ajusta esta distancia para el chatbot */
+    right: 20px;
+    background: #008080;
+    color: #fff;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.chatbot-icon:hover {
+    background: #005f5f;
+}
         @media (max-width: 768px) {
             .about-section {
                 flex-direction: column;
@@ -248,19 +289,80 @@
                     </div>
                 </div>
             </div>
+
+
+
+
             <div id="turnos" class="appointments-section cta">
                 <h2>Turnos</h2>
-                <a href="#">Programar una consulta</a>
+                <div class="form-group">
+                    <label for="lugar">Seleccione el Lugar de Atención</label>
+                    <select id="lugar" class="form-control">
+                        <option value="1" data-lat="-34.6037" data-lng="-58.3816">Lugar 1 - Av. Santa Fe, Capital</option>
+                        <option value="2" data-lat="-34.6174" data-lng="-58.3772">Lugar 2 - Av. 9 de Julio, Capital</option>
+                        <option value="3" data-lat="-34.6105" data-lng="-58.4350">Lugar 3 - Av. Corrientes, Capital</option>
+                        <option value="4" data-lat="-34.5967" data-lng="-58.4382">Lugar 4 - Av. Cabildo, Capital</option>
+                    </select>
+                </div>
+            
+                <div id="map" style="height: 400px;"></div>
+            
+                <div class="form-group">
+                    <label for="fecha">Seleccione la Fecha del Turno</label>
+                    <input id="fecha" type="text" class="form-control" placeholder="Seleccione la fecha">
+                </div>
+                
+                <div class="form-group">
+                    <label for="horario">Seleccione el Horario</label>
+                    <select id="horario" class="form-control">
+                        <option value="">Seleccione un horario</option>
+                    </select>
+                </div>
+                <button id="continuarBtn" class="btn btn-primary">Continuar</button>
+            
+                <div id="modalTurno" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabel">Confirmar Turno</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p id="infoTurno"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Editar</button>
+                                <button type="button" class="btn btn-primary" id="confirmarBtn">Confirmar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             </div>
         </div>
     </div>
+    <!-- Botón de "Ir hacia arriba" -->
+<button id="btn-top" onclick="scrollToTop()">
+    ↑
+</button>
+
     <div class="chatbot-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
             <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12c0 2.72 1.13 5.18 2.94 6.93l-1.39 3.52 3.52-1.39C8.82 21.87 10.28 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-2 12H8v-2h2v2zm4 0h-2v-2h2v2zm2 0h-2v-2h2v2zm0-4H8V8h8v2z"/>
         </svg>
     </div>
 </body>
-<script>function filtrarTratamientos() {
+<script>
+ // Inicializar Flatpickr en el campo de fecha
+flatpickr("#fecha", {
+    dateFormat: "Y-m-d", // Puedes cambiar el formato si prefieres otro
+    minDate: "today",    // Para que no se puedan seleccionar fechas pasadas
+});
+
+function filtrarTratamientos() {
     // Obtener el valor del filtro
     var filtro = document.getElementById('filtro-tratamientos').value;
 
@@ -278,6 +380,85 @@
         } else {
             tratamiento.style.display = 'none'; // Ocultar
         }
+    });
+}
+
+// Mapa
+var map = L.map('map').setView([-34.6037, -58.3816], 13); // Coordenadas predeterminadas (Lugar 1)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+function updateMap(lat, lng) {
+    map.setView([lat, lng], 15);
+    L.marker([lat, lng]).addTo(map)
+        .bindPopup("Ubicación del lugar de atención.")
+        .openPopup();
+}
+
+document.getElementById('lugar').addEventListener('change', function () {
+    var lugar = this.options[this.selectedIndex];
+    var lat = lugar.getAttribute('data-lat');
+    var lng = lugar.getAttribute('data-lng');
+    updateMap(lat, lng);
+});
+
+// Horarios disponibles para fechas seleccionadas
+const horarios = {
+    "2024-11-15": ["09:00", "10:00", "11:00", "12:00"],
+    "2024-11-16": ["13:00", "14:00", "15:00"],
+};
+
+document.getElementById('fecha').addEventListener('change', function () {
+    var fecha = this.value;
+    var selectHora = document.getElementById('horario');  // ID correcto aquí
+    selectHora.innerHTML = "";  // Limpiar horarios anteriores
+
+    if (horarios[fecha]) {
+        horarios[fecha].forEach(function(hora) {
+            var option = document.createElement('option');
+            option.value = hora;
+            option.text = hora;
+            selectHora.appendChild(option);
+        });
+    } else {
+        var option = document.createElement('option');
+        option.value = "";
+        option.text = "No hay horarios disponibles";
+        selectHora.appendChild(option);
+    }
+});
+
+document.getElementById('continuarBtn').addEventListener('click', function() {
+    var lugar = document.getElementById('lugar').selectedOptions[0].text;
+    var fecha = document.getElementById('fecha').value;
+    var hora = document.getElementById('horario').value;
+
+    var infoTurno = `Lugar: ${lugar}<br>Fecha: ${fecha}<br>Hora: ${hora}`;
+
+    document.getElementById('infoTurno').innerHTML = infoTurno;
+    $('#modalTurno').modal('show');
+});
+
+document.getElementById('confirmarBtn').addEventListener('click', function() {
+    // Lógica para guardar el turno
+    alert("¡Turno confirmado!");
+    $('#modalTurno').modal('hide');
+});
+window.onscroll = function() {
+    let btnTop = document.getElementById("btn-top");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btnTop.style.display = "block";  // Muestra el botón cuando el usuario baja
+    } else {
+        btnTop.style.display = "none";   // Oculta el botón cuando el usuario está arriba
+    }
+};
+
+// Función para hacer scroll hacia arriba
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // Desplazamiento suave
     });
 }
 </script>
