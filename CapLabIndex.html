@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,15 +15,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-<!-- Flatpickr -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
 
-<!-- Bootstrap -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,6 +33,7 @@
             color: #333;
             scroll-behavior: smooth;
         }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -42,20 +44,24 @@
             text-align: center;
             z-index: 1000;
         }
+
         .navbar a {
             color: #fff;
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
         }
+
         .navbar a:hover {
             text-decoration: underline;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 80px 20px 0;
         }
+
         .header {
             background: #008080;
             color: #fff;
@@ -63,66 +69,102 @@
             text-align: center;
             margin-top: 20px;
         }
+
         .header h1 {
             margin: 0;
         }
+
         .content {
             padding: 20px 0;
         }
-        .about-section, .results-section, .treatments-section, .appointments-section {
+
+        .about-section,
+        .results-section,
+        .treatments-section,
+        .appointments-section {
             padding: 20px 0;
         }
+
         .about-section {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
-        .about-text, .about-image {
+
+        .about-text,
+        .about-image {
             flex: 1 1 300px;
         }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+        }
+
         .about-image img {
             max-width: 100%;
             border-radius: 8px;
         }
+
         .about-text {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin-left: 5%;
         }
+
         .about-text h2 {
             margin-top: 0;
         }
+
         .section {
             background: #f0f0f0;
             padding: 20px;
             border-radius: 8px;
             margin-top: 20px;
         }
+
         .section h3 {
             margin-top: 0;
         }
+
         .reviews-section {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
+
         .review {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             background: #fff;
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
+        .review img {
+            width: 30%;
+            height: 30%;
+            border-radius: 100%;
+        }
+
         .review p {
             margin: 0;
+            text-align: justify;
         }
+
         .review-author {
             font-weight: bold;
             margin-top: 10px;
         }
+
         .cta {
             text-align: center;
             margin: 20px 0;
         }
+
         .cta a {
             display: inline-block;
             background: #008080;
@@ -132,50 +174,200 @@
             text-decoration: none;
             transition: background 0.3s;
         }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            row-gap: 20px;
+            justify-items: center;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            margin-top: 20px;
+        }
+
+        .before-photo,
+        .after-photo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .before-photo img {
+            width: 80%;
+            border-radius: 5%;
+        }
+
+        .after-photo img {
+            width: 80%;
+            filter: blur(8px);
+            border-radius: 5%;
+        }
+
+        .after-photo img:hover,
+        .before-photo img:hover {
+            filter: blur(0px);
+            transition: .3s;
+            cursor: pointer;
+        }
+
         .cta a:hover {
             background: #005f5f;
         }
+
+        .video-banner {
+            margin-top: 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tratamiento-flex {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .tratamiento-flex p {
+            display: flex;
+            align-items: center;
+            text-align: justify;
+            padding: 5%;
+        }
+
+        .tratamiento-flex img {
+            width: 400px;
+            height: 300px;
+        }
+
+        .tratamiento-card {
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
         #btn-top {
-    position: fixed;
-    bottom: 20px;  /* Ajusta esta distancia para que no se superponga con el chatbot */
-    right: 90px;   /* Coloca el botón a la derecha */
-    background-color: #008080;  /* Color de fondo */
-    color: white;  /* Color del texto */
-    border: none;
-    padding: 15px;
-    border-radius: 50%;  /* Botón circular */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    z-index: 999;  /* Asegura que el botón quede sobre otros elementos */
-    display: none;  /* Inicialmente está oculto */
-    transition: background-color 0.3s;
-}
+            position: fixed;
+            bottom: 20px;
+            width: 50px;
+            height: 50px;
+            /* Ajusta esta distancia para que no se superponga con el chatbot */
+            right: 90px;
+            /* Coloca el botón a la derecha */
+            background-color: #008080;
+            /* Color de fondo */
+            color: white;
+            /* Color del texto */
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            /* Botón circular */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 999;
+            /* Asegura que el botón quede sobre otros elementos */
+            display: none;
+            /* Inicialmente está oculto */
+            transition: background-color 0.3s;
+        }
 
-#btn-top:hover {
-    background-color: #005f5f;
-}
+        #btn-top:hover {
+            background-color: #005f5f;
+        }
 
-/* Para el ícono del chatbot */
-.chatbot-icon {
-    position: fixed;
-    bottom: 20px;  /* Ajusta esta distancia para el chatbot */
-    right: 20px;
-    background: #008080;
-    color: #fff;
-    border-radius: 50%;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    cursor: pointer;
-    z-index: 1000;
-}
+        /* Para el ícono del chatbot */
+        .chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            /* Ajusta esta distancia para el chatbot */
+            right: 20px;
+            background: #008080;
+            color: #fff;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+        }
 
-.chatbot-icon:hover {
-    background: #005f5f;
-}
+        .chatbot-icon:hover {
+            background: #005f5f;
+        }
+
+        /* Estilos para la ventana del chatbot */
+        .chatbot-window {
+            position: fixed;
+            bottom: 80px;
+            /* Se coloca justo encima del botón */
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: none;
+            /* Oculto por defecto */
+            z-index: 999;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Estilos del encabezado del chatbot */
+        .chatbot-header {
+            background: #008080;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        /* Estilo del botón de minimizar */
+        .minimize-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Estilos para el cuerpo del chatbot */
+        .chatbot-body {
+            padding: 15px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .galeria-productos {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .galeria-productos .producto {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imgGaleria {
+            width: 90%;
+            height: 90%;
+            border-radius: 5%;
+            border: 2px #008080 solid;
+        }
+
+        .imgGaleria:hover {
+            transition: .5s;
+            width: 99%;
+            height: 99%;
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
             .about-section {
                 flex-direction: column;
             }
+
             .navbar a {
                 display: block;
                 margin: 10px 0;
@@ -183,6 +375,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="navbar">
         <a href="#quienes-somos">Quiénes Somos</a>
@@ -198,37 +391,71 @@
             <div class="about-section">
                 <div class="about-text">
                     <h2>Bienvenidos a CapiLab</h2>
-                    <p>En CapiLab, nos especializamos en ofrecer tratamientos avanzados para el crecimiento del cabello, utilizando la técnica de extracción de unidades foliculares (FUE). Nuestro objetivo es ayudar a hombres y mujeres a recuperar su confianza y mejorar su apariencia con resultados naturales y mínimamente invasivos.</p>
-                    <p>Nuestro público objetivo incluye personas de entre 25 y 45 años que residen en áreas urbanas y buscan soluciones estéticas avanzadas. En CapiLab, valoramos la salud, el bienestar y la apariencia juvenil de nuestros pacientes.</p>
+                    <p>En CapiLab, nos especializamos en ofrecer tratamientos avanzados para el crecimiento del cabello,
+                        utilizando la técnica de extracción de unidades foliculares (FUE). Nuestro objetivo es ayudar a
+                        hombres y mujeres a recuperar su confianza y mejorar su apariencia con resultados naturales y
+                        mínimamente invasivos.</p>
+                    <p>Nuestro público objetivo incluye personas de entre 25 y 45 años que residen en áreas urbanas y
+                        buscan soluciones estéticas avanzadas. En CapiLab, valoramos la salud, el bienestar y la
+                        apariencia juvenil de nuestros pacientes.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://via.placeholder.com/400" alt="CapiLab">
+                    <img src="./img/CapiLab.png" alt="CapiLab">
                 </div>
             </div>
             <div id="info-clinica" class="section">
                 <h3>Información de la Clínica</h3>
-                <p>En CapiLab, contamos con instalaciones de última generación diseñadas para brindar comodidad y privacidad a nuestros pacientes. Nuestra clínica está equipada con tecnología avanzada para garantizar los mejores resultados en nuestros tratamientos capilares.</p>
+                <p>En CapiLab, contamos con instalaciones de última generación diseñadas para brindar comodidad y
+                    privacidad a nuestros pacientes. Nuestra clínica está equipada con tecnología avanzada para
+                    garantizar los mejores resultados en nuestros tratamientos capilares.</p>
             </div>
             <div id="info-medicos" class="section">
                 <h3>Información de los Médicos</h3>
-                <p>Nuestro equipo de médicos especialistas está altamente calificado y cuenta con una amplia experiencia en el campo de la restauración capilar. Cada uno de nuestros médicos se dedica a proporcionar atención personalizada y de alta calidad a cada paciente.</p>
+                <p>Nuestro equipo de médicos especialistas está altamente calificado y cuenta con una amplia experiencia
+                    en el campo de la restauración capilar. Cada uno de nuestros médicos se dedica a proporcionar
+                    atención personalizada y de alta calidad a cada paciente.</p>
             </div>
             <div id="info-productos" class="section">
-                <h3>Productos Disponibles para la Venta</h3>
-                <p>Además de nuestros tratamientos capilares, ofrecemos una selección de productos de cuidado del cabello para mantener y mejorar los resultados obtenidos. Estos productos han sido cuidadosamente seleccionados por su eficacia y calidad.</p>
+                <div class="productos">
+                    <h3>Productos Disponibles para la Venta</h3>
+                    <p>Además de nuestros tratamientos capilares, ofrecemos una selección de productos de cuidado del
+                        cabello para mantener y mejorar los resultados obtenidos. Estos productos han sido
+                        cuidadosamente
+                        seleccionados por su eficacia y calidad.</p>
+                    <div class="galeria-productos">
+                        <div class="producto">
+                            <img class="imgGaleria" src="./img/prod1.png" alt="prod1">
+                        </div>
+                        <div class="producto">
+                            <img class="imgGaleria" src="./img/prod2.png" alt="prod2">
+                        </div>
+                        <div class="producto">
+                            <img class="imgGaleria" src="./img/prod3.png" alt="prod3">
+                        </div>
+                        <div class="producto">
+                            <img class="imgGaleria" src="./img/prod4.png" alt="prod4">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="reseñas" class="section reviews-section">
                 <h3>Reseñas</h3>
                 <div class="review">
-                    <p>"El tratamiento en CapiLab superó todas mis expectativas. Mi cabello luce increíble y me siento mucho más confiado. ¡Gracias, CapiLab!"</p>
+                    <img src="./img/persona1.png" alt="persona1">
+                    <p>"El tratamiento en CapiLab superó todas mis expectativas. Mi cabello luce increíble y me siento
+                        mucho más confiado. ¡Gracias, CapiLab!"</p>
                     <div class="review-author">- Juan Pérez</div>
                 </div>
                 <div class="review">
-                    <p>"La técnica FUE realmente funciona. Los resultados son muy naturales y el proceso fue mucho más sencillo de lo que esperaba."</p>
+                    <img src="./img/persona2.png" alt="persona2">
+                    <p>"La técnica FUE realmente funciona. Los resultados son muy naturales y el proceso fue mucho más
+                        sencillo de lo que esperaba."</p>
                     <div class="review-author">- María García</div>
                 </div>
                 <div class="review">
-                    <p>"Estoy muy contento con los resultados de mi tratamiento en CapiLab. El personal es muy profesional y las instalaciones son de primera clase."</p>
+                    <img src="./img/persona3.png" alt="persona3">
+                    <p>"Estoy muy contento con los resultados de mi tratamiento en CapiLab. El personal es muy
+                        profesional y las instalaciones son de primera clase."</p>
                     <div class="review-author">- Carlos Fernández</div>
                 </div>
             </div>
@@ -236,27 +463,44 @@
                 <h3>Resultados</h3>
                 <div class="before-after">
                     <div class="before-photo">
-                        <h4>Antes del Tratamiento</h4>
-                        <img src="https://via.placeholder.com/400x300?text=Antes" alt="Antes del Tratamiento">
+                        <h4>Antes</h4>
+                        <img src="./img/1_1.png" alt="Antes del Tratamiento">
                     </div>
                     <div class="after-photo">
-                        <h4>Después del Tratamiento</h4>
-                        <img src="https://via.placeholder.com/400x300?text=Después" alt="Después del Tratamiento">
+                        <h4>Después</h4>
+                        <img src="./img/1_2.png" alt="Después del Tratamiento">
+                    </div>
+                    <div class="before-photo">
+                        <h4>Antes</h4>
+                        <img src="./img/2_1.png" alt="Antes del Tratamiento">
+                    </div>
+                    <div class="after-photo">
+                        <h4>Después</h4>
+                        <img src="./img/2_2.png" alt="Después del Tratamiento">
+                    </div>
+                    <div class="before-photo">
+                        <h4>Antes</h4>
+                        <img src="./img/3_1.png" alt="Antes del Tratamiento">
+                    </div>
+                    <div class="after-photo">
+                        <h4>Después</h4>
+                        <img src="./img/3_2.png" alt="Después del Tratamiento">
                     </div>
                 </div>
                 <div class="video-banner">
                     <h4>Conoce más sobre nuestros tratamientos</h4>
                     <div class="video-thumbnail">
-                        <a href="https://www.youtube.com/watch?v=example" target="_blank">
-                            <img src="https://via.placeholder.com/800x400?text=Banner+Video" alt="Video de Tratamientos">
-                        </a>
+                        <iframe width="720" height="480" src="https://www.youtube.com/embed/oHpiOqUp5K0"
+                            title="The Truth Behind This New Hair Loss Treatment | Exosomes" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
-            
+
             <div id="tratamientos" class="section">
                 <h3>Tratamientos</h3>
-            
+
                 <!-- Filtro de tratamientos -->
                 <div class="filtro">
                     <label for="filtro-tratamientos">Filtrar tratamientos:</label>
@@ -267,199 +511,267 @@
                         <option value="micropigmentacion">Micropigmentación Capilar</option>
                     </select>
                 </div>
-            
+
                 <!-- Tratamientos -->
                 <div class="tratamientos-lista">
                     <div class="tratamiento-card" data-tratamiento="laser">
                         <h4>Implante Capilar con Láser</h4>
-                        <img src="https://via.placeholder.com/400x300?text=Implante+Laser" alt="Implante Capilar con Láser">
-                        <p>El tratamiento de implante capilar con láser es ideal para personas que buscan estimular el crecimiento del cabello de manera natural, utilizando tecnología avanzada para restaurar la densidad capilar. Este tratamiento es mínimamente invasivo y puede ser combinado con otros métodos para obtener los mejores resultados.</p>
+                        <div class="tratamiento-flex">
+                            <img src="./img/pelo_1.jfif" alt="Implante Capilar con Láser">
+                            <p>El tratamiento de implante capilar con láser es ideal para personas que buscan estimular
+                                el
+                                crecimiento del cabello de manera natural, utilizando tecnología avanzada para restaurar
+                                la
+                                densidad capilar. Este tratamiento es mínimamente invasivo y puede ser combinado con
+                                otros
+                                métodos para obtener los mejores resultados.</p>
+                        </div>
                     </div>
-            
+
                     <div class="tratamiento-card" data-tratamiento="microimplante">
                         <h4>Microimplante Capilar</h4>
-                        <img src="https://via.placeholder.com/400x300?text=Microimplante" alt="Microimplante Capilar">
-                        <p>El microimplante capilar es un procedimiento menos invasivo que el implante tradicional, donde se utilizan microinjertos para densificar el cabello. Es ideal para quienes buscan resultados naturales y duraderos sin la necesidad de un procedimiento quirúrgico mayor.</p>
+                        <div class="tratamiento-flex">
+                            <img src="./img/pelo_2.jfif" alt="Microimplante Capilar">
+                            <p>El microimplante capilar es un procedimiento menos invasivo que el implante tradicional,
+                                donde se utilizan microinjertos para densificar el cabello. Es ideal para quienes buscan
+                                resultados naturales y duraderos sin la necesidad de un procedimiento quirúrgico mayor.
+                            </p>
+                        </div>
                     </div>
-            
+
                     <div class="tratamiento-card" data-tratamiento="micropigmentacion">
                         <h4>Micropigmentación Capilar</h4>
-                        <img src="https://via.placeholder.com/400x300?text=Micropigmentacion" alt="Micropigmentación Capilar">
-                        <p>La micropigmentación capilar es una técnica estética que simula la apariencia de cabello corto, mediante la aplicación de pigmentos que se adhieren a la epidermis. Es una excelente opción para quienes buscan mejorar la apariencia de la densidad capilar sin cirugía.</p>
+                        <div class="tratamiento-flex">
+                            <img src="./img/pelo_4.JPG" alt="Micropigmentación Capilar">
+                            <p>La micropigmentación capilar es una técnica estética que simula la apariencia de cabello
+                                corto, mediante la aplicación de pigmentos que se adhieren a la epidermis. Es una
+                                excelente
+                                opción para quienes buscan mejorar la apariencia de la densidad capilar sin cirugía.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
 
 
-            <div id="turnos" class="appointments-section cta">
-                <h2>Turnos</h2>
-                <div class="form-group">
-                    <label for="lugar">Seleccione el Lugar de Atención</label>
-                    <select id="lugar" class="form-control">
-                        <option value="1" data-lat="-34.6037" data-lng="-58.3816">Lugar 1 - Av. Santa Fe, Capital</option>
-                        <option value="2" data-lat="-34.6174" data-lng="-58.3772">Lugar 2 - Av. 9 de Julio, Capital</option>
-                        <option value="3" data-lat="-34.6105" data-lng="-58.4350">Lugar 3 - Av. Corrientes, Capital</option>
-                        <option value="4" data-lat="-34.5967" data-lng="-58.4382">Lugar 4 - Av. Cabildo, Capital</option>
-                    </select>
-                </div>
-            
-                <div id="map" style="height: 400px;"></div>
-            
-                <div class="form-group">
-                    <label for="fecha">Seleccione la Fecha del Turno</label>
-                    <input id="fecha" type="text" class="form-control" placeholder="Seleccione la fecha">
-                </div>
-                
-                <div class="form-group">
-                    <label for="horario">Seleccione el Horario</label>
-                    <select id="horario" class="form-control">
-                        <option value="">Seleccione un horario</option>
-                    </select>
-                </div>
-                <button id="continuarBtn" class="btn btn-primary">Continuar</button>
-            
-                <div id="modalTurno" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLabel">Confirmar Turno</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p id="infoTurno"></p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Editar</button>
-                                <button type="button" class="btn btn-primary" id="confirmarBtn">Confirmar</button>
+                <div id="turnos" class="appointments-section cta">
+                    <h2>Turnos</h2>
+                    <div class="form-group">
+                        <label for="lugar">Seleccione el Lugar de Atención</label>
+                        <select id="lugar" class="form-control">
+                            <option value="1" data-lat="-34.6037" data-lng="-58.3816">Lugar 1 - Av. Santa Fe, Capital
+                            </option>
+                            <option value="2" data-lat="-34.6174" data-lng="-58.3772">Lugar 2 - Av. 9 de Julio, Capital
+                            </option>
+                            <option value="3" data-lat="-34.6105" data-lng="-58.4350">Lugar 3 - Av. Corrientes, Capital
+                            </option>
+                            <option value="4" data-lat="-34.5967" data-lng="-58.4382">Lugar 4 - Av. Cabildo, Capital
+                            </option>
+                        </select>
+                    </div>
+
+                    <div id="map" style="height: 400px;"></div>
+
+                    <div class="form-group">
+                        <label for="fecha">Seleccione la Fecha del Turno</label>
+                        <input id="fecha" type="text" class="form-control" placeholder="Seleccione la fecha">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="horario">Seleccione el Horario</label>
+                        <select id="horario" class="form-control">
+                            <option value="">Seleccione un horario</option>
+                        </select>
+                    </div>
+                    <button id="continuarBtn" class="btn btn-primary">Continuar</button>
+
+                    <div id="modalTurno" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabel">Confirmar Turno</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p id="infoTurno"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Editar</button>
+                                    <button type="button" class="btn btn-primary" id="confirmarBtn">Confirmar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
+
             </div>
         </div>
     </div>
     <!-- Botón de "Ir hacia arriba" -->
-<button id="btn-top" onclick="scrollToTop()">
-    ↑
-</button>
+    <button id="btn-top" onclick="scrollToTop()">
+        ↑
+    </button>
 
     <div class="chatbot-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12c0 2.72 1.13 5.18 2.94 6.93l-1.39 3.52 3.52-1.39C8.82 21.87 10.28 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-2 12H8v-2h2v2zm4 0h-2v-2h2v2zm2 0h-2v-2h2v2zm0-4H8V8h8v2z"/>
+            <path fill="currentColor"
+                d="M12 2C6.48 2 2 6.48 2 12c0 2.72 1.13 5.18 2.94 6.93l-1.39 3.52 3.52-1.39C8.82 21.87 10.28 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-2 12H8v-2h2v2zm4 0h-2v-2h2v2zm2 0h-2v-2h2v2zm0-4H8V8h8v2z" />
         </svg>
     </div>
+
+    <!-- Contenedor del chatbot -->
+    <div class="chatbot-window">
+        <div class="chatbot-header">
+            <button class="minimize-btn">-</button>
+            <h3>Chatbot</h3>
+        </div>
+        <div class="chatbot-body">
+            <!-- Aquí irían los mensajes del chatbot o la UI del chatbot -->
+            <p>¡Hola! ¿En qué puedo ayudarte?</p>
+        </div>
+    </div>
+
 </body>
 <script>
- // Inicializar Flatpickr en el campo de fecha
-flatpickr("#fecha", {
-    dateFormat: "Y-m-d", // Puedes cambiar el formato si prefieres otro
-    minDate: "today",    // Para que no se puedan seleccionar fechas pasadas
-});
+    // Inicializar Flatpickr en el campo de fecha
+    flatpickr("#fecha", {
+        dateFormat: "Y-m-d", // Puedes cambiar el formato si prefieres otro
+        minDate: "today",    // Para que no se puedan seleccionar fechas pasadas
+    });
 
-function filtrarTratamientos() {
-    // Obtener el valor del filtro
-    var filtro = document.getElementById('filtro-tratamientos').value;
+    function filtrarTratamientos() {
+        // Obtener el valor del filtro
+        var filtro = document.getElementById('filtro-tratamientos').value;
 
-    // Obtener todas las tarjetas de tratamiento
-    var tratamientos = document.querySelectorAll('.tratamiento-card');
+        // Obtener todas las tarjetas de tratamiento
+        var tratamientos = document.querySelectorAll('.tratamiento-card');
 
-    // Iterar sobre cada tarjeta de tratamiento
-    tratamientos.forEach(function(tratamiento) {
-        // Obtener el tipo de tratamiento que está asociado con esta tarjeta
-        var tipoTratamiento = tratamiento.getAttribute('data-tratamiento');
+        // Iterar sobre cada tarjeta de tratamiento
+        tratamientos.forEach(function (tratamiento) {
+            // Obtener el tipo de tratamiento que está asociado con esta tarjeta
+            var tipoTratamiento = tratamiento.getAttribute('data-tratamiento');
 
-        // Mostrar u ocultar según el filtro seleccionado
-        if (filtro === 'todos' || filtro === tipoTratamiento) {
-            tratamiento.style.display = 'block'; // Mostrar
+            // Mostrar u ocultar según el filtro seleccionado
+            if (filtro === 'todos' || filtro === tipoTratamiento) {
+                tratamiento.style.display = 'block'; // Mostrar
+            } else {
+                tratamiento.style.display = 'none'; // Ocultar
+            }
+        });
+    }
+
+    // Mapa
+    var map = L.map('map').setView([-34.6037, -58.3816], 13); // Coordenadas predeterminadas (Lugar 1)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    function updateMap(lat, lng) {
+        map.setView([lat, lng], 15);
+        L.marker([lat, lng]).addTo(map)
+            .bindPopup("Ubicación del lugar de atención.")
+            .openPopup();
+    }
+
+    document.getElementById('lugar').addEventListener('change', function () {
+        var lugar = this.options[this.selectedIndex];
+        var lat = lugar.getAttribute('data-lat');
+        var lng = lugar.getAttribute('data-lng');
+        updateMap(lat, lng);
+    });
+
+    // Horarios disponibles para fechas seleccionadas
+    const horarios = {
+        "2024-11-15": ["09:00", "10:00", "11:00", "12:00"],
+        "2024-11-16": ["13:00", "14:00", "15:00"],
+    };
+
+    document.getElementById('fecha').addEventListener('change', function () {
+        var fecha = this.value;
+        var selectHora = document.getElementById('horario');  // ID correcto aquí
+        selectHora.innerHTML = "";  // Limpiar horarios anteriores
+
+        if (horarios[fecha]) {
+            horarios[fecha].forEach(function (hora) {
+                var option = document.createElement('option');
+                option.value = hora;
+                option.text = hora;
+                selectHora.appendChild(option);
+            });
         } else {
-            tratamiento.style.display = 'none'; // Ocultar
+            var option = document.createElement('option');
+            option.value = "";
+            option.text = "No hay horarios disponibles";
+            selectHora.appendChild(option);
         }
     });
-}
 
-// Mapa
-var map = L.map('map').setView([-34.6037, -58.3816], 13); // Coordenadas predeterminadas (Lugar 1)
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+    document.getElementById('continuarBtn').addEventListener('click', function () {
+        var lugar = document.getElementById('lugar').selectedOptions[0].text;
+        var fecha = document.getElementById('fecha').value;
+        var hora = document.getElementById('horario').value;
 
-function updateMap(lat, lng) {
-    map.setView([lat, lng], 15);
-    L.marker([lat, lng]).addTo(map)
-        .bindPopup("Ubicación del lugar de atención.")
-        .openPopup();
-}
+        var infoTurno = `Lugar: ${lugar}<br>Fecha: ${fecha}<br>Hora: ${hora}`;
 
-document.getElementById('lugar').addEventListener('change', function () {
-    var lugar = this.options[this.selectedIndex];
-    var lat = lugar.getAttribute('data-lat');
-    var lng = lugar.getAttribute('data-lng');
-    updateMap(lat, lng);
-});
-
-// Horarios disponibles para fechas seleccionadas
-const horarios = {
-    "2024-11-15": ["09:00", "10:00", "11:00", "12:00"],
-    "2024-11-16": ["13:00", "14:00", "15:00"],
-};
-
-document.getElementById('fecha').addEventListener('change', function () {
-    var fecha = this.value;
-    var selectHora = document.getElementById('horario');  // ID correcto aquí
-    selectHora.innerHTML = "";  // Limpiar horarios anteriores
-
-    if (horarios[fecha]) {
-        horarios[fecha].forEach(function(hora) {
-            var option = document.createElement('option');
-            option.value = hora;
-            option.text = hora;
-            selectHora.appendChild(option);
-        });
-    } else {
-        var option = document.createElement('option');
-        option.value = "";
-        option.text = "No hay horarios disponibles";
-        selectHora.appendChild(option);
-    }
-});
-
-document.getElementById('continuarBtn').addEventListener('click', function() {
-    var lugar = document.getElementById('lugar').selectedOptions[0].text;
-    var fecha = document.getElementById('fecha').value;
-    var hora = document.getElementById('horario').value;
-
-    var infoTurno = `Lugar: ${lugar}<br>Fecha: ${fecha}<br>Hora: ${hora}`;
-
-    document.getElementById('infoTurno').innerHTML = infoTurno;
-    $('#modalTurno').modal('show');
-});
-
-document.getElementById('confirmarBtn').addEventListener('click', function() {
-    // Lógica para guardar el turno
-    alert("¡Turno confirmado!");
-    $('#modalTurno').modal('hide');
-});
-window.onscroll = function() {
-    let btnTop = document.getElementById("btn-top");
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        btnTop.style.display = "block";  // Muestra el botón cuando el usuario baja
-    } else {
-        btnTop.style.display = "none";   // Oculta el botón cuando el usuario está arriba
-    }
-};
-
-// Función para hacer scroll hacia arriba
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'  // Desplazamiento suave
+        document.getElementById('infoTurno').innerHTML = infoTurno;
+        $('#modalTurno').modal('show');
     });
-}
+
+    document.getElementById('confirmarBtn').addEventListener('click', function () {
+        // Lógica para guardar el turno
+        alert("¡Turno confirmado!");
+        $('#modalTurno').modal('hide');
+    });
+    window.onscroll = function () {
+        let btnTop = document.getElementById("btn-top");
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            btnTop.style.display = "block";  // Muestra el botón cuando el usuario baja
+        } else {
+            btnTop.style.display = "none";   // Oculta el botón cuando el usuario está arriba
+        }
+    };
+
+    // Función para hacer scroll hacia arriba
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'  // Desplazamiento suave
+        });
+    }
+
+    // Selección de los elementos
+    const chatbotIcon = document.querySelector('.chatbot-icon');
+    const chatbotWindow = document.querySelector('.chatbot-window');
+    const minimizeBtn = document.querySelector('.minimize-btn');
+
+    // Función para abrir o cerrar la ventana del chatbot
+    chatbotIcon.addEventListener('click', () => {
+        if (chatbotWindow.style.display === 'none' || chatbotWindow.style.display === '') {
+            // Si está oculto, mostrarlo
+            chatbotWindow.style.display = 'block';
+        } else {
+            // Si está visible, ocultarlo
+            chatbotWindow.style.display = 'none';
+        }
+    });
+
+    // Función para minimizar la ventana del chatbot
+    minimizeBtn.addEventListener('click', () => {
+        // Cuando se minimiza, ocultamos el cuerpo del chatbot y mostramos solo el encabezado
+        chatbotWindow.style.height = '50px';  // Solo el encabezado será visible
+        chatbotWindow.querySelector('.chatbot-body').style.display = 'none';  // Ocultamos el cuerpo
+    });
+
+    // Para restaurar la ventana cuando la desminimizamos
+    chatbotWindow.addEventListener('click', () => {
+        if (chatbotWindow.style.height === '50px') {
+            chatbotWindow.style.height = '400px';  // Restauramos el tamaño original
+            chatbotWindow.querySelector('.chatbot-body').style.display = 'block';  // Mostramos el cuerpo
+        }
+    });
 </script>
+
 </html>

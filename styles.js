@@ -16,4 +16,4 @@ function filtrarTratamientos() {
         } else {
             tratamiento.style.display = 'none'; // Ocultar
         }
-    });
+    })};
